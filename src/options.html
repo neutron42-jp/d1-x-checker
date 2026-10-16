@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>d1 X checker 設定</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        font: 14px/1.6 -apple-system, "Segoe UI", "Noto Sans JP", sans-serif;
+        max-width: 760px;
+        margin: 24px auto;
+        padding: 0 16px;
+      }
+      h1 {
+        font-size: 18px;
+        margin-bottom: 4px;
+      }
+      h2 {
+        font-size: 15px;
+        margin-top: 28px;
+        border-bottom: 1px solid currentColor;
+        padding-bottom: 4px;
+      }
+      label {
+        display: block;
+        margin: 10px 0 4px;
+        font-weight: 600;
+      }
+      input[type="text"],
+      input[type="url"],
+      input[type="number"],
+      textarea {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 6px 8px;
+        font: inherit;
+        border: 1px solid #8888;
+        border-radius: 6px;
+        background: transparent;
+        color: inherit;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 8px;
+      }
+      th,
+      td {
+        text-align: left;
+        vertical-align: top;
+        padding: 6px 8px;
+        border-bottom: 1px solid #8884;
+      }
+      th {
+        font-size: 12px;
+        opacity: 0.75;
+      }
+      .row-actions button,
+      .toolbar button {
+        font: inherit;
+        padding: 5px 12px;
+        border-radius: 6px;
+        border: 1px solid #8888;
+        background: #8882;
+        color: inherit;
+        cursor: pointer;
+      }
+      .hint {
+        font-size: 12px;
+        opacity: 0.75;
+      }
+      .toolbar {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin-top: 16px;
+      }
+      #status {
+        font-size: 12px;
+        opacity: 0.85;
+      }
+      td input[type="text"] {
+        min-width: 0;
+      }
+      td input[type="number"] {
+        width: 74px;
+      }
+      .checkline {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 8px 0;
+      }
+      .checkline input {
+        width: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>d1 X checker</h1>
+    <p class="hint">
+      X の「フォロー中」一覧で、こちらからはフォローしているが相手からはされていない相手を探し、
+      条件に合うかをローカル LLM (d1) に判定させてハイライトします。
+    </p>
+
+    <h2>判定サーバ</h2>
+    <label for="endpoint">エンドポイント</label>
+    <input id="endpoint" type="url" spellcheck="false" />
+    <p class="hint">
+      例: <code>http://127.0.0.1:8081/v1/systemone</code>
+      (d1-3B) / <code>http://127.0.0.1:8082/v1/systemone</code> (d1-omni-600M)。
+      起動は <code>scripts/d1-server.sh start</code>。
+    </p>
+    <label for="cacheTtlDays">判定キャッシュの有効期限 (日)</label>
+    <input id="cacheTtlDays" type="number" min="0" max="365" step="1" />
+    <div class="checkline">
+      <input id="autoJudge" type="checkbox" />
+      <label for="autoJudge" style="margin: 0">表示された行を自動で判定する</label>
+    </div>
+    <div class="checkline">
+      <input id="showPanel" type="checkbox" />
+      <label for="showPanel" style="margin: 0">ページ右下のカウンタを表示する</label>
+    </div>
+
+    <h2>条件</h2>
+    <p class="hint">
+      1 行 = モデルへの yes/no 質問 1 つ。「確率 &ge; 閾値」なら条件一致として扱い、
+      どれか 1 つ一致した行をハイライトします。閾値は 0.5〜0.9 の間で調整してください。
+    </p>
+    <table id="conditions">
+      <thead>
+        <tr>
+          <th style="width: 22%">名前</th>
+          <th>質問 (日本語でOK)</th>
+          <th style="width: 11%">閾値</th>
+          <th style="width: 8%">有効</th>
+          <th style="width: 6%"></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <div class="toolbar">
+      <button id="add" type="button">条件を追加</button>
+      <button id="save" type="button">保存</button>
+      <button id="reset" type="button">既定に戻す</button>
+      <button id="test" type="button">接続確認</button>
+      <button id="log" type="button">判定ログを保存</button>
+    </div>
+    <p id="status"></p>
+
+    <script type="module" src="options.js"></script>
+  </body>
+</html>

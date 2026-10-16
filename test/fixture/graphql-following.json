@@ -1,0 +1,202 @@
+{
+  "data": {
+    "user": {
+      "result": {
+        "timeline": {
+          "timeline": {
+            "instructions": [
+              {
+                "type": "TimelineAddEntries",
+                "entries": [
+                  {
+                    "entryId": "user-1111",
+                    "content": {
+                      "entryType": "TimelineTimelineItem",
+                      "itemContent": {
+                        "itemType": "TimelineUser",
+                        "user_results": {
+                          "result": {
+                            "__typename": "User",
+                            "rest_id": "1111",
+                            "core": {
+                              "name": "さくら🌸カフェ巡り",
+                              "screen_name": "sakura_cafe_love"
+                            },
+                            "legacy": {
+                              "name": "さくら🌸カフェ巡り",
+                              "screen_name": "sakura_cafe_love",
+                              "description": "はじめまして！都内でカフェ巡りしてます。相互フォロー歓迎！フォロバします！",
+                              "followers_count": 312,
+                              "friends_count": 4820,
+                              "followed_by": false,
+                              "following": true
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "user-2222",
+                    "content": {
+                      "entryType": "TimelineTimelineItem",
+                      "itemContent": {
+                        "itemType": "TimelineUser",
+                        "user_results": {
+                          "result": {
+                            "__typename": "User",
+                            "rest_id": "2222",
+                            "core": {
+                              "name": "田中 誠",
+                              "screen_name": "tanaka_makoto"
+                            },
+                            "legacy": {
+                              "name": "田中 誠",
+                              "screen_name": "tanaka_makoto",
+                              "description": "ソフトウェアエンジニア。Rustと低レイヤGPU。",
+                              "followers_count": 203,
+                              "friends_count": 187,
+                              "followed_by": true,
+                              "following": true
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "user-3333",
+                    "content": {
+                      "entryType": "TimelineTimelineItem",
+                      "itemContent": {
+                        "itemType": "TimelineUser",
+                        "user_results": {
+                          "result": {
+                            "__typename": "User",
+                            "rest_id": "3333",
+                            "core": {
+                              "name": "スーパーメガストア公式",
+                              "screen_name": "megastore_jp"
+                            },
+                            "legacy": {
+                              "description": "毎日セール情報を配信中！お得な情報をお届けします",
+                              "followers_count": 45120,
+                              "friends_count": 12
+                            },
+                            "relationship_perspectives": {
+                              "followed_by": false,
+                              "following": true
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "user-4444",
+                    "content": {
+                      "entryType": "TimelineTimelineItem",
+                      "itemContent": {
+                        "itemType": "TimelineUser",
+                        "user_results": {
+                          "result": {
+                            "__typename": "User",
+                            "rest_id": "4444",
+                            "core": { "name": "みかん", "screen_name": "mikan_pon" },
+                            "legacy": {
+                              "name": "みかん",
+                              "screen_name": "mikan_pon",
+                              "description": "写真と珈琲。たまに呟きます",
+                              "followers_count": 88,
+                              "friends_count": 95,
+                              "followed_by": true,
+                              "following": true
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "user-5555",
+                    "content": {
+                      "entryType": "TimelineTimelineItem",
+                      "itemContent": {
+                        "itemType": "TimelineUser",
+                        "user_results": {
+                          "result": {
+                            "__typename": "User",
+                            "rest_id": "5555",
+                            "core": {
+                              "name": "たろう",
+                              "screen_name": "Taro12345678"
+                            },
+                            "legacy": {
+                              "description": "組み込みと電子工作が趣味です",
+                              "followers_count": 120,
+                              "friends_count": 380
+                            },
+                            "relationship_perspectives": {
+                              "followed_by": false,
+                              "following": true
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "user-7777",
+                    "content": {
+                      "entryType": "TimelineTimelineItem",
+                      "itemContent": {
+                        "itemType": "TimelineUser",
+                        "user_results": {
+                          "result": {
+                            "__typename": "User",
+                            "rest_id": "7777",
+                            "core": { "name": "もも", "screen_name": "momo_lab" },
+                            "legacy": { "following": true },
+                            "relationship_perspectives": {
+                              "followed_by": false,
+                              "following": true
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "entryId": "user-6666",
+                    "content": {
+                      "entryType": "TimelineTimelineItem",
+                      "itemContent": {
+                        "itemType": "TimelineUser",
+                        "user_results": {
+                          "result": {
+                            "__typename": "User",
+                            "rest_id": "6666",
+                            "core": { "name": "ゆい", "screen_name": "yui_dm" },
+                            "legacy": {
+                              "name": "ゆい",
+                              "screen_name": "yui_dm",
+                              "description": "お仕事募集してます♡ DMください 条件あります",
+                              "followers_count": 180,
+                              "friends_count": 2100,
+                              "followed_by": false,
+                              "following": true
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

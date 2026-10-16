@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "d1 X checker",
+  "version": "0.1.0",
+  "description": "X のフォロー中一覧で「自分だけがフォローしている相手」を探し、ユーザー設定の条件に合うかをローカル LLM (d1) に判定させてハイライトする",
+  "permissions": ["storage"],
+  "host_permissions": ["http://127.0.0.1/*", "http://localhost/*"],
+  "background": {
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
+  "options_page": "src/options.html",
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_title": "d1 X checker"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://x.com/*", "https://twitter.com/*", "http://127.0.0.1/*"],
+      "js": ["src/scan-users.js"],
+      "world": "MAIN",
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://x.com/*", "https://twitter.com/*", "http://127.0.0.1/*"],
+      "js": ["src/inject.js"],
+      "world": "MAIN",
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://x.com/*", "https://twitter.com/*", "http://127.0.0.1/*"],
+      "js": ["src/parse-cell.js", "src/content.js"],
+      "css": ["src/content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}

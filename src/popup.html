@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>d1 X checker</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        font: 13px/1.6 -apple-system, "Segoe UI", "Noto Sans JP", sans-serif;
+        width: 320px;
+        margin: 0;
+        padding: 12px 14px;
+      }
+      h2 {
+        font-size: 13px;
+        margin: 12px 0 6px;
+        opacity: 0.75;
+      }
+      dl {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 2px 10px;
+        margin: 0;
+      }
+      dt {
+        opacity: 0.7;
+      }
+      dd {
+        margin: 0;
+        font-variant-numeric: tabular-nums;
+      }
+      .buttons {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+      }
+      button {
+        font: inherit;
+        padding: 5px 10px;
+        border: 1px solid #8888;
+        border-radius: 6px;
+        background: #8882;
+        color: inherit;
+        cursor: pointer;
+      }
+      #status {
+        font-size: 12px;
+        opacity: 0.85;
+        min-height: 1.4em;
+        margin-top: 8px;
+      }
+      ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+      .ok {
+        color: #1d9bf0;
+      }
+      .bad {
+        color: #f4212e;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="server"></div>
+    <h2>このタブの状況</h2>
+    <dl id="stats"></dl>
+    <h2>条件</h2>
+    <ul id="conditions"></ul>
+    <div class="buttons">
+      <button id="rescan" type="button">再判定</button>
+      <button id="dump" type="button">DOM/応答を保存</button>
+      <button id="clear" type="button">キャッシュ削除</button>
+      <button id="options" type="button">設定</button>
+    </div>
+    <p id="status"></p>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

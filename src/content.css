@@ -1,0 +1,74 @@
+/* ハイライトは X 側のスタイルに負けないよう !important で当てる。 */
+[data-testid="UserCell"].d1x-match {
+  border: 2px solid rgba(29, 155, 240, 0.9) !important;
+  border-radius: 12px !important;
+  background: linear-gradient(
+    90deg,
+    rgba(29, 155, 240, 0.14) 0%,
+    rgba(29, 155, 240, 0.04) 60%,
+    rgba(29, 155, 240, 0) 100%
+  ) !important;
+  position: relative !important;
+}
+
+[data-testid="UserCell"].d1x-unmatched {
+  border-left: 2px solid rgba(113, 118, 123, 0.5) !important;
+}
+
+[data-testid="UserCell"].d1x-error {
+  border-left: 3px solid rgba(244, 33, 46, 0.7) !important;
+}
+
+[data-testid="UserCell"] > .d1x-badge {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  z-index: 5;
+  font: 600 11px/1.4 -apple-system, "Segoe UI", sans-serif;
+  color: #fff;
+  background: rgba(29, 155, 240, 0.95);
+  padding: 2px 7px;
+  border-radius: 999px;
+  cursor: help;
+  pointer-events: auto;
+}
+
+#d1x-panel {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2147483000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font: 12px/1.4 -apple-system, "Segoe UI", sans-serif;
+  color: #e7e9ea;
+  background: rgba(0, 0, 0, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  padding: 6px 12px;
+  backdrop-filter: blur(6px);
+}
+
+#d1x-panel .d1x-title {
+  font-weight: 700;
+  color: #1d9bf0;
+}
+
+#d1x-panel .d1x-status {
+  opacity: 0.75;
+}
+
+#d1x-panel button {
+  font: inherit;
+  color: #e7e9ea;
+  background: rgba(255, 255, 255, 0.12);
+  border: 0;
+  border-radius: 999px;
+  padding: 3px 10px;
+  cursor: pointer;
+}
+
+#d1x-panel button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}

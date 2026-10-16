@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>Fixture: /testuser/following</title>
+  </head>
+  <body>
+    <div data-testid="primaryColumn">
+      <h1>Following</h1>
+      <section aria-label="Timeline: Following">
+        <!-- 1. 一方的フォロー: 「Follows you」無し、bio は testid 付きで DOM にある -->
+        <div data-testid="cellInnerDiv">
+          <div data-testid="UserCell">
+            <div><a href="/sakura_cafe_love"><img alt="" width="48" height="48" /></a></div>
+            <div>
+              <div data-testid="User-Name">
+                <span>さくら🌸カフェ巡り</span><span>@sakura_cafe_love</span>
+              </div>
+              <div data-testid="UserDescription">
+                はじめまして！都内でカフェ巡りしてます。相互フォロー歓迎！フォロバします！
+              </div>
+            </div>
+            <div data-testid="1234-follow"><span>フォロー中</span></div>
+          </div>
+        </div>
+
+        <!-- 2. 相互フォロー: userFollowIndicator があるので対象外 -->
+        <div data-testid="cellInnerDiv">
+          <div data-testid="UserCell">
+            <div><a href="/tanaka_makoto"><img alt="" width="48" height="48" /></a></div>
+            <div>
+              <div data-testid="User-Name">
+                <span>田中 誠</span><span>@tanaka_makoto</span>
+              </div>
+              <div data-testid="userFollowIndicator"><span>Follows you</span></div>
+              <div data-testid="UserDescription">
+                ソフトウェアエンジニア。Rustと低レイヤGPU。
+              </div>
+            </div>
+            <div data-testid="2345-follow"><span>フォロー中</span></div>
+          </div>
+        </div>
+
+        <!-- 3. 一方的フォロー: bio は testid 無しの div、数値は GraphQL の入れ子形からのみ -->
+        <div data-testid="cellInnerDiv">
+          <div data-testid="UserCell">
+            <div><a href="/megastore_jp"><img alt="" width="48" height="48" /></a></div>
+            <div>
+              <div data-testid="User-Name">
+                <span>スーパーメガストア公式</span><span>@megastore_jp</span>
+              </div>
+              <div dir="ltr">毎日セール情報を配信中！お得な情報をお届けします</div>
+            </div>
+            <div data-testid="3456-follow"><span>フォロー中</span></div>
+          </div>
+        </div>
+
+        <!-- 4. 相互フォロー: バッジは無いが本文に「フォローされています」(locale 依存テキスト) -->
+        <div data-testid="cellInnerDiv">
+          <div data-testid="UserCell">
+            <div><a href="/mikan_pon"><img alt="" width="48" height="48" /></a></div>
+            <div>
+              <div data-testid="User-Name">
+                <span>みかん</span><span>@mikan_pon</span>
+              </div>
+              <div><span>フォローされています</span></div>
+              <div data-testid="UserDescription">写真と珈琲。たまに呟きます</div>
+            </div>
+            <div data-testid="4567-follow"><span>フォロー中</span></div>
+          </div>
+        </div>
+
+        <!-- 5. 一方的フォロー: handle に数字。「フォロー中」ボタンの数字を数値と誤認しないこと -->
+        <div data-testid="cellInnerDiv">
+          <div data-testid="UserCell">
+            <div><a href="/Taro12345678"><img alt="" width="48" height="48" /></a></div>
+            <div>
+              <div data-testid="User-Name">
+                <span>たろう</span><span>@Taro12345678</span>
+              </div>
+              <div dir="ltr">組み込みと電子工作が趣味です</div>
+            </div>
+            <div data-testid="5678-follow"><span>5678 フォロー中</span></div>
+          </div>
+        </div>
+
+        <!-- 6. 一方的フォロー: bio も数値も GraphQL にしか無い -->
+        <div data-testid="cellInnerDiv">
+          <div data-testid="UserCell">
+            <div><a href="/yui_dm"><img alt="" width="48" height="48" /></a></div>
+            <div>
+              <div data-testid="User-Name"><span>ゆい</span><span>@yui_dm</span></div>
+            </div>
+            <div data-testid="6789-follow"><span>フォロー中</span></div>
+          </div>
+        </div>
+
+        <!-- 7. 一方的フォロー: bio が無く、名前だけの div がある (名前を bio と誤認しないこと) -->
+        <div data-testid="cellInnerDiv">
+          <div data-testid="UserCell">
+            <div><a href="/momo_lab"><img alt="" width="48" height="48" /></a></div>
+            <div>
+              <div data-testid="User-Name"><span>もも</span><span>@momo_lab</span></div>
+              <div dir="ltr"><span>もも</span></div>
+            </div>
+            <div data-testid="7890-follow"><span>フォロー中</span></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      // X が自分で投げる GraphQL リクエストを模す。inject.js がこれを傍受する。
+      fetch("/i/api/graphql/Following")
+        .then((r) => r.text())
+        .then((t) => console.log("[fixture] graphql fetched", t.length))
+        .catch((e) => console.error("[fixture] fetch failed", e));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "d1-x-checker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Chrome/Brave 拡張: X のフォロー中一覧をローカル LLM (d1) で判定してハイライトする",
+  "scripts": {
+    "test": "node --test"
+  }
+}
